@@ -1,0 +1,133 @@
+# 🌱 Lysimeter Weight Logging System
+
+This system uses Arduino to measure and log the weight from two different load cell configurations — one using four load cells, and another using a single load cell. Data is saved to an SD card with a real-time timestamp for each reading. Ideal for monitoring organic matter in environmental experiments.
+
+---
+
+## 📦 System Overview
+
+- **Load Cell Group 1:** Four load cells → HX711 → Arduino
+- **Load Cell Group 2:** One load cell → HX711 → Arduino
+- Both groups provide separate outputs and are saved with timestamps.
+- Data is written to an SD card in CSV format.
+
+---
+
+## 🖥️ Serial Monitor Commands
+
+> ⚠️ Note: Due to a serial input quirk, you may need to send commands **quickly and multiple times** in the Serial Monitor for them to register.
+
+### 🔧 Calibration
+
+Use the following commands to calibrate the load cells:
+
+- Type `1` → calibrates **Group 1** (four load cells)
+- Type `2` → calibrates **Group 2** (single load cell)
+
+You'll be guided through a **tare process** and asked to place a known heavy weight (2–3 kg recommended).
+
+> 🧪 Typical calibration factors: `292–293`  
+> 📉 Lighter or heavier calibration weights may affect accuracy. You may experiment with different loads.
+
+---
+
+### ⚖️ Taring
+
+To tare (zero) the currently loaded weight: t 
+
+---
+
+### 🕒 Set Timestamp Manually
+
+If the real-time clock (RTC) battery is dead or missing, manually set the time with: set 
+
+
+> By default, the RTC time syncs with your computer clock when uploading the code.
+
+---
+
+### ⏲️ Change Measurement Interval
+
+To change how frequently the system records data:
+
+- Open the Arduino sketch.
+- Go to **line 32**.
+- Change the value to your desired interval (in milliseconds).
+
+---
+
+## ⚙️ Power-On Procedure
+
+The system automatically **tares** when powered on and starts running the last uploaded sketch.
+
+To avoid incorrect readings, follow this order:
+
+1. **Close** the grey tray to protect the electronics.
+2. **Place** the grey tray on the load cells.
+3. **Power on** the device.
+4. **Add** dry organic matter to the litter tray.
+
+---
+
+## 🪵 Tray Placement Guide
+
+Ensure the tray is correctly aligned:
+
+- Match the **“F – F”** marks (black "f") on both the **wooden frame** and **tray**.
+- The tray should rest **easily** on the **black screw spots** — don’t use force.
+
+---
+
+## 💧 Filter Maintenance
+
+The system's filter may **clog** after heavy rainfall over several days.
+
+> 💡 Regular inspection and improvement of the filter design is recommended for long-term use.
+
+---
+
+## 📁 Data Output
+
+- Output format: `.CSV`
+- Each row contains: 
+  - Timestamp
+  - Weight from Group 1 (4 load cells)
+  - Weight from Group 2 (1 load cell)
+
+---
+
+## 🔌 Required Hardware
+
+- Arduino Uno / Nano
+- 2 × HX711 Load Cell Amplifiers
+- 5 × Load Cells (4 for base, 1 for litter tray)
+- SD Card Module
+- RTC Module (e.g., DS3231)
+- Power Supply
+- Protective Grey Tray
+- Wooden Mount Frame
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🧰 Future Improvements
+
+- Add filter clog detection
+- Wireless data transmission (e.g., LoRa or WiFi)
+- Automatic weather integration (rain, humidity, etc.)
+- Battery monitoring and solar charging
+
+---
+
+## 📧 Support
+
+For support, issues, or contributions, open an [Issue](https://github.com/yourusername/lysimeter/issues) or submit a [Pull Request](https://github.com/yourusername/lysimeter/pulls).
+
+---
+
+
